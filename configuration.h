@@ -18,9 +18,9 @@
 #define Echo_PIN   11  // Ultrasonic Echo pin
 #define Trig_PIN   12  // Ultrasonic Trig pin
 
-#define BUZZ_PIN   13  // Buzzer
+#define BUZZ_PIN   A0  // Buzzer
 
-#define IR_PIN     14  // IR receiver Signal pin
+#define IR_PIN     13  // IR receiver Signal pin
 
 // IR remote control buttons
 #define IR_BUTTON_1         0x00FFA25D // 16753245

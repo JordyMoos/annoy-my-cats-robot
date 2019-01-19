@@ -1,6 +1,11 @@
+#include <IRremote.h>
 #include <Servo.h>
 #include "configuration.h"
+
 Servo head;
+
+IRrecv IR(IR_PIN);  //   IRrecv object  IR get code from IR remoter
+decode_results IRresults;
 
 /*motor control*/
 void go_Advance(void)  //Forward
@@ -106,7 +111,23 @@ void do_Uart_Tick()
     case '5':Drive_Status=MANUAL_DRIVE; Drive_Num=STOP_STOP;buzz_OFF();Serial.println("stop");break;
     case '3':Drive_Status=AUTO_DRIVE_UO; Serial.println("avoid obstacles...");break;
     case '1':Drive_Status=AUTO_DRIVE_LF; Serial.println("line follow...");break;
-    default:break;
+    default:
+        if (IR.decode(&IRresults))
+          {
+            Serial.println(IRresults.value);
+            switch (IRresults.value)
+            {
+              case IR_ADVANCE: Drive_Num = GO_ADVANCE; break;
+              case IR_BACK: Drive_Num = GO_BACK; break;
+              case IR_LEFT: Drive_Num = GO_LEFT; break;
+              case IR_RIGHT: Drive_Num = GO_RIGHT; break;
+              case IR_STOP: Drive_Num = STOP_STOP; break;
+            }
+
+            IRresults.value = 0;
+            IR.resume();
+          }
+    break;
   }
 }
 
@@ -196,8 +217,12 @@ void setup()
   pinMode(Trig_PIN, OUTPUT); 
   pinMode(Echo_PIN,INPUT); 
 
-  pinMode(BUZZ_PIN, OUTPUT);
-  buzz_OFF();  
+//  pinMode(BUZZ_PIN, OUTPUT);
+//  buzz_OFF();  
+
+  pinMode(IR_PIN, INPUT);
+  digitalWrite(IR_PIN, HIGH);
+  IR.enableIRIn();
 
   pinMode(LFSensor_0,INPUT);
   pinMode(LFSensor_1,INPUT);
@@ -212,6 +237,7 @@ void setup()
 
 void loop()
 {
+  delay(100);
   do_Uart_Tick();
   do_Drive_Tick();
 }
