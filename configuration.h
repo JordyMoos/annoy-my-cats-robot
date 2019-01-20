@@ -1,5 +1,21 @@
 
 /*
+ Drive
+*/
+
+#define PIN_DRIVE_LEFT_1      2
+#define PIN_DRIVE_LEFT_2      4
+#define PIN_DRIVE_LEFT_SPEED  6
+
+#define PIN_DRIVE_RIGHT_1     7
+#define PIN_DRIVE_RIGHT_2     8
+#define PIN_DRIVE_RIGHT_SPEED 5
+
+#define DRIVE_FORWARD_SPEED 255
+#define DRIVE_REVERSE_SPEED 150
+#define DRIVE_TURN_SPEED    150
+
+/*
  Lights
 */
 
@@ -51,8 +67,9 @@ bool redrawLights;
 #define TOGGLE_CAR_LIGHTS IR_BUTTON_STAR
 #define CAR_TURN_LEFT     IR_BUTTON_LEFT
 #define CAR_TURN_RIGHT    IR_BUTTON_RIGHT
-#define CAR_ACCELERATE    IR_BUTTON_UP
+#define CAR_FORWARD       IR_BUTTON_UP
 #define CAR_REVERSE       IR_BUTTON_DOWN
+#define CAR_STOP          IR_BUTTON_OK
 
 IRrecv IR(PIN_IR);
 decode_results IRresults;

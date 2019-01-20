@@ -52,19 +52,28 @@ void readIR()
         toggleMainLights();
       break;
 
-      case CAR_ACCELERATE:
+      case CAR_FORWARD:
+        driveForward();
         setReverseLights(false);
       break;
       
       case CAR_REVERSE:
+        driveReverse();
         setReverseLights(true);
       break;
 
       case CAR_TURN_LEFT:
+        driveLeft();
         setReverseLights(false);
       break;
 
       case CAR_TURN_RIGHT:
+        driveRight();
+        setReverseLights(false);
+      break;
+
+      case CAR_STOP:
+        driveStop();
         setReverseLights(false);
       break;
     }
