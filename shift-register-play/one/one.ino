@@ -10,8 +10,8 @@
 //****************************************************************
 
 const int dataPin  = 3;  // DS
-const int clockPin = 10; // SH_CP
-const int latchPin = 13; // ST_CP
+const int clockPin = 13; // SH_CP
+const int latchPin = 10; // ST_CP
 
 void setup() {
   pinMode(dataPin, OUTPUT);
@@ -20,14 +20,19 @@ void setup() {
 
   Serial.begin(9600);
   while (! Serial);
+  delay(1000);
 }
 
 void loop() {
-  for (int numberToDisplay = 0; numberToDisplay < 256; numberToDisplay+= 50) {
+  //count up routine
+  for (int j = 0; j < 256; j++) {
+    //ground latchPin and hold low for as long as you are transmitting
     digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, MSBFIRST, 255);
-
+    shiftOut(dataPin, clockPin, LSBFIRST, j);
+    //return the latch pin high to signal chip that it
+    //no longer needs to listen for information
     digitalWrite(latchPin, HIGH);
-    delay(500);
+    Serial.println(j);
+    delay(100);
   }
 }

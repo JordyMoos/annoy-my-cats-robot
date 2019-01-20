@@ -8,8 +8,8 @@
 
  */
 const int dataPin  = 3;  // DS
-const int clockPin = 10; // SH_CP
-const int latchPin = 13; // ST_CP
+const int clockPin = 13; // SH_CP
+const int latchPin = 10; // ST_CP
 
 //holders for infromation you're going to pass to shifting function
 byte data;
@@ -17,6 +17,8 @@ byte dataArray[10];
 
 void setup() {
   //set pins to output because they are addressed in the main loop
+  pinMode(dataPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
   pinMode(latchPin, OUTPUT);
   Serial.begin(9600);
 

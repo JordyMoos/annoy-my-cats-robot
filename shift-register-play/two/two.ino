@@ -18,8 +18,8 @@
  */
 
 const int dataPin  = 3;  // DS
-const int clockPin = 10; // SH_CP
-const int latchPin = 13; // ST_CP
+const int clockPin = 13; // SH_CP
+const int latchPin = 10; // ST_CP
 
 void setup() {
   pinMode(latchPin, OUTPUT);
