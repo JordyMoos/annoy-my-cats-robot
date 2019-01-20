@@ -55,26 +55,36 @@ void readIR()
       case CAR_FORWARD:
         driveForward();
         setReverseLights(false);
+        setTurnLeftLights(false);
+        setTurnRightLights(false);
       break;
       
       case CAR_REVERSE:
         driveReverse();
         setReverseLights(true);
+        setTurnLeftLights(false);
+        setTurnRightLights(false);
       break;
 
       case CAR_TURN_LEFT:
         driveLeft();
         setReverseLights(false);
+        setTurnLeftLights(true);
+        setTurnRightLights(false);
       break;
 
       case CAR_TURN_RIGHT:
         driveRight();
         setReverseLights(false);
+        setTurnLeftLights(false);
+        setTurnRightLights(true);
       break;
 
       case CAR_STOP:
         driveStop();
         setReverseLights(false);
+        setTurnLeftLights(false);
+        setTurnRightLights(false);
       break;
     }
 

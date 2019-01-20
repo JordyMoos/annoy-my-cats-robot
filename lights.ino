@@ -32,3 +32,19 @@ void setReverseLights(boolean newState)
   redrawLights = true;
 }
 
+void setTurnLeftLights(boolean newState)
+{
+  lights[LIGHTS_HEAD_TURN_LEFT] = newState;
+  lights[LIGHTS_TAIL_TURN_LEFT] = newState;
+
+  redrawLights = true;
+}
+
+void setTurnRightLights(boolean newState)
+{
+  lights[LIGHTS_HEAD_TURN_RIGHT] = newState;
+  lights[LIGHTS_TAIL_TURN_RIGHT] = newState;
+
+  redrawLights = true;
+}
+

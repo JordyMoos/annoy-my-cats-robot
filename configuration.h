@@ -23,16 +23,21 @@
 #define PIN_LIGHTS_STCP 10 // ST_CP Storage register clock input
 #define PIN_LIGHTS_SHCP 13 // SH_CP Shift register clock input
 
-#define LIGHTS_HEAD_LEFT_1   0
-#define LIGHTS_HEAD_LEFT_2   1
-#define LIGHTS_HEAD_RIGHT_1  2
-#define LIGHTS_HEAD_RIGHT_2  3
-#define LIGHTS_TAIL_LEFT     4
-#define LIGHTS_TAIL_RIGHT    5
-#define LIGHTS_REVERSE_LEFT  6
-#define LIGHTS_REVERSE_RIGHT 7
+#define LIGHTS_HEAD_LEFT_1      0
+#define LIGHTS_HEAD_LEFT_2      1
+#define LIGHTS_HEAD_RIGHT_1     2
+#define LIGHTS_HEAD_RIGHT_2     3
+#define LIGHTS_HEAD_TURN_LEFT   4
+#define LIGHTS_HEAD_TURN_RIGHT  5
+#define LIGHTS_TAIL_TURN_LEFT   6
+#define LIGHTS_TAIL_TURN_RIGHT  7
 
-#define LIGHTS_COUNT 8
+#define LIGHTS_TAIL_LEFT        8
+#define LIGHTS_TAIL_RIGHT       9
+#define LIGHTS_REVERSE_LEFT    10
+#define LIGHTS_REVERSE_RIGHT   11
+
+#define LIGHTS_COUNT 16
 boolean lights[LIGHTS_COUNT];
 
 #define MAIN_LIGHTS_COUNT 6
