@@ -24,6 +24,34 @@ void toggleMainLights()
   redrawLights = true;
 }
 
+
+void updateTurningLights()
+{
+  if (isTurningLeft)
+  {
+    int x = (millis() / TURNING_BLINKING_TIME) % 2;
+    if (lights[LIGHTS_HEAD_TURN_LEFT] != x)
+    {
+      lights[LIGHTS_HEAD_TURN_LEFT] = x;
+      lights[LIGHTS_TAIL_TURN_LEFT] = x;
+    
+      redrawLights = true;
+    }
+  }
+  
+  if (isTurningRight)
+  {
+    bool x = (millis() / TURNING_BLINKING_TIME) % 2;
+    if (lights[LIGHTS_HEAD_TURN_RIGHT] != x)
+    {
+      lights[LIGHTS_HEAD_TURN_RIGHT] = x;
+      lights[LIGHTS_TAIL_TURN_RIGHT] = x;
+    
+      redrawLights = true;
+    }
+  }
+}
+
 void setReverseLights(boolean newState)
 {
   lights[LIGHTS_REVERSE_LEFT] = newState;
@@ -38,6 +66,7 @@ void setTurnLeftLights(boolean newState)
   lights[LIGHTS_TAIL_TURN_LEFT] = newState;
 
   redrawLights = true;
+  isTurningLeft = newState;
 }
 
 void setTurnRightLights(boolean newState)
@@ -46,5 +75,6 @@ void setTurnRightLights(boolean newState)
   lights[LIGHTS_TAIL_TURN_RIGHT] = newState;
 
   redrawLights = true;
+  isTurningRight = newState;
 }
 

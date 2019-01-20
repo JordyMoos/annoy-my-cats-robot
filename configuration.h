@@ -42,7 +42,12 @@ boolean lights[LIGHTS_COUNT];
 
 #define MAIN_LIGHTS_COUNT 6
 int mainLightIndexes[MAIN_LIGHTS_COUNT];
+
+#define TURNING_BLINKING_TIME 300
+
 bool redrawLights;
+bool isTurningLeft;
+bool isTurningRight;
 
 /*
  Infrared

@@ -31,7 +31,8 @@ void setup()
 void loop()
 {
   redrawLights = false;
-  
+
+  updateTurningLights();
   readIR();
 
   if (redrawLights)
@@ -92,5 +93,6 @@ void readIR()
     IR.resume();
   }
 }
+
 
 
