@@ -27,7 +27,7 @@ void toggleMainLights()
 
 void updateTurningLights()
 {
-  if (isTurningLeft)
+  if (driveStatus == DRIVING_LEFT)
   {
     int x = (millis() / TURNING_BLINKING_TIME) % 2;
     if (lights[LIGHTS_HEAD_TURN_LEFT] != x)
@@ -39,7 +39,7 @@ void updateTurningLights()
     }
   }
   
-  if (isTurningRight)
+  if (driveStatus == DRIVING_RIGHT)
   {
     bool x = (millis() / TURNING_BLINKING_TIME) % 2;
     if (lights[LIGHTS_HEAD_TURN_RIGHT] != x)
@@ -66,7 +66,6 @@ void setTurnLeftLights(boolean newState)
   lights[LIGHTS_TAIL_TURN_LEFT] = newState;
 
   redrawLights = true;
-  isTurningLeft = newState;
 }
 
 void setTurnRightLights(boolean newState)
@@ -75,6 +74,5 @@ void setTurnRightLights(boolean newState)
   lights[LIGHTS_TAIL_TURN_RIGHT] = newState;
 
   redrawLights = true;
-  isTurningRight = newState;
 }
 

@@ -15,6 +15,14 @@
 #define DRIVE_REVERSE_SPEED 150
 #define DRIVE_TURN_SPEED    150
 
+enum DriveStatus {
+  DRIVING_FORWARD,
+  DRIVING_REVERSE,
+  DRIVING_LEFT,
+  DRIVING_RIGHT,
+  DRIVING_STOPPED
+} driveStatus = DRIVING_STOPPED;
+
 /*
  Lights
 */
@@ -83,3 +91,12 @@ bool isTurningRight;
 
 IRrecv IR(PIN_IR);
 decode_results IRresults;
+
+/*
+ Buzzer
+*/
+
+#define PIN_BUZZER A3
+
+#define BUZZER_REVERSE_TIME 300
+

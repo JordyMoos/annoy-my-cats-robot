@@ -3,6 +3,10 @@
 
 void setup()
 {
+  // Buzzer
+  pinMode(PIN_BUZZER, OUTPUT);
+  buzzOff();  
+  
   // IR
   pinMode(PIN_IR, INPUT);
   digitalWrite(PIN_IR, HIGH);
@@ -39,6 +43,8 @@ void loop()
   {
     writeLights();
   }
+
+  updateBuzzer();
   
   delay(20);
 }
@@ -94,5 +100,28 @@ void readIR()
   }
 }
 
+void updateBuzzer()
+{
+  switch (driveStatus) {
+    case DRIVING_REVERSE:
+        if ((millis() / BUZZER_REVERSE_TIME) % 2)
+          buzzOn();
+        else
+          buzzOff();
+      break;
 
+    default:
+      buzzOff();
+  }
+}
+
+void buzzOff()
+{
+  digitalWrite(PIN_BUZZER, HIGH);
+}
+
+void buzzOn()
+{
+  digitalWrite(PIN_BUZZER, LOW);
+}
 
