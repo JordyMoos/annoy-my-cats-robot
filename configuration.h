@@ -118,7 +118,7 @@ decode_results IRresults;
 #define LASER_HORIZONTAL_STEP_SIZE              1 
 
 #define LASER_MOTOR_GROUND_LOCATION           140
-#define LASER_MOTOR_GROUND_FAR_LOCATION       100
+#define LASER_MOTOR_GROUND_FAR_LOCATION       110
 #define LASER_MOTOR_CEILING_LOCATION           20
 
 Servo laserMotorHorizontal;
