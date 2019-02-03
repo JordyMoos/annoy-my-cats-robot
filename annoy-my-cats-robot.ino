@@ -1,4 +1,5 @@
 #include <IRremote.h>
+#include <Servo.h>
 #include "configuration.h"
 
 void setup()
@@ -25,8 +26,20 @@ void setup()
   mainLightIndexes[5] = LIGHTS_TAIL_RIGHT;
 
   // Clear the lights
-  writeLights();
+  //writeLights();
 
+  // Laser
+  pinMode(PIN_LASER, OUTPUT);
+  setLaser(false);
+
+  // Lasers horizontal motor
+  laserMotorHorizontal.attach(PIN_LASER_MOTOR_HORIZONTAL);
+  setLaserCenter();
+  
+  // Lasers vertical motor
+  laserMotorVertical.attach(PIN_LASER_MOTOR_VERTICAL);
+  laserTargetGround();
+  
   // Serial monitor
   Serial.begin(9600);
   while ( ! Serial);
@@ -41,10 +54,11 @@ void loop()
 
   if (redrawLights)
   {
-    writeLights();
+  //  writeLights();
   }
 
   updateBuzzer();
+  updateLaserAnimation();
   
   delay(20);
 }
@@ -93,35 +107,34 @@ void readIR()
         setTurnLeftLights(false);
         setTurnRightLights(false);
       break;
+
+      case LASER_TOGGLE:
+        toggleLaser();
+      break;
+
+      case LASER_HORIZONTAL_CENTER:
+        setLaserCenter();
+      break;
+
+      case LASER_HORIZONTAL_ANIMATE:
+        startLaserAnimation();
+      break;
+
+      case LASER_VERTICAL_GROUND:
+        laserTarget(LASER_MOTOR_GROUND_LOCATION);
+      break;
+
+      case LASER_VERTICAL_GROUND_FAR:
+        laserTarget(LASER_MOTOR_GROUND_FAR_LOCATION);
+      break;
+
+      case LASER_VERTICAL_CEILING:
+        laserTarget(LASER_MOTOR_CEILING_LOCATION);
+      break;
     }
 
     IRresults.value = 0;
     IR.resume();
   }
-}
-
-void updateBuzzer()
-{
-  switch (driveStatus) {
-    case DRIVING_REVERSE:
-        if ((millis() / BUZZER_REVERSE_TIME) % 2)
-          buzzOn();
-        else
-          buzzOff();
-      break;
-
-    default:
-      buzzOff();
-  }
-}
-
-void buzzOff()
-{
-  digitalWrite(PIN_BUZZER, HIGH);
-}
-
-void buzzOn()
-{
-  digitalWrite(PIN_BUZZER, LOW);
 }
 

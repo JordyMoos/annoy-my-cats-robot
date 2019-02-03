@@ -27,9 +27,9 @@ enum DriveStatus {
  Lights
 */
 
-#define PIN_LIGHTS_DS    3 // DS Data
-#define PIN_LIGHTS_STCP 10 // ST_CP Storage register clock input
-#define PIN_LIGHTS_SHCP 13 // SH_CP Shift register clock input
+#define PIN_LIGHTS_DS          40 // DS Data
+#define PIN_LIGHTS_STCP        41 // ST_CP Storage register clock input
+#define PIN_LIGHTS_SHCP        42 // SH_CP Shift register clock input
 
 #define LIGHTS_HEAD_LEFT_1      0
 #define LIGHTS_HEAD_LEFT_2      1
@@ -45,17 +45,15 @@ enum DriveStatus {
 #define LIGHTS_REVERSE_LEFT    10
 #define LIGHTS_REVERSE_RIGHT   11
 
-#define LIGHTS_COUNT 16
+#define LIGHTS_COUNT           16
 boolean lights[LIGHTS_COUNT];
 
-#define MAIN_LIGHTS_COUNT 6
+#define MAIN_LIGHTS_COUNT       6
 int mainLightIndexes[MAIN_LIGHTS_COUNT];
 
 #define TURNING_BLINKING_TIME 300
 
 bool redrawLights;
-bool isTurningLeft;
-bool isTurningRight;
 
 /*
  Infrared
@@ -82,12 +80,18 @@ bool isTurningRight;
 #define IR_BUTTON_DOWN      0x00FF4AB5 // 16730805
 #define IR_BUTTON_OK        0x00FF38C7 // 16726215
 
-#define TOGGLE_CAR_LIGHTS IR_BUTTON_STAR
-#define CAR_TURN_LEFT     IR_BUTTON_LEFT
-#define CAR_TURN_RIGHT    IR_BUTTON_RIGHT
-#define CAR_FORWARD       IR_BUTTON_UP
-#define CAR_REVERSE       IR_BUTTON_DOWN
-#define CAR_STOP          IR_BUTTON_OK
+#define TOGGLE_CAR_LIGHTS         IR_BUTTON_STAR
+#define CAR_TURN_LEFT             IR_BUTTON_LEFT
+#define CAR_TURN_RIGHT            IR_BUTTON_RIGHT
+#define CAR_FORWARD               IR_BUTTON_UP
+#define CAR_REVERSE               IR_BUTTON_DOWN
+#define CAR_STOP                  IR_BUTTON_OK
+#define LASER_TOGGLE              IR_BUTTON_0
+#define LASER_VERTICAL_GROUND     IR_BUTTON_7
+#define LASER_VERTICAL_GROUND_FAR IR_BUTTON_8
+#define LASER_VERTICAL_CEILING    IR_BUTTON_9
+#define LASER_HORIZONTAL_ANIMATE  IR_BUTTON_4
+#define LASER_HORIZONTAL_CENTER   IR_BUTTON_5           
 
 IRrecv IR(PIN_IR);
 decode_results IRresults;
@@ -96,7 +100,43 @@ decode_results IRresults;
  Buzzer
 */
 
-#define PIN_BUZZER A3
+#define PIN_BUZZER 22
 
 #define BUZZER_REVERSE_TIME 300
+
+/*
+ Laser
+*/
+
+#define PIN_LASER                              11
+#define PIN_LASER_MOTOR_HORIZONTAL             12
+#define PIN_LASER_MOTOR_VERTICAL               10
+
+#define LASER_HORIZONTAL_CENTER_LOCATION       95
+#define LASER_HORIZONTAL_ANIMATE_MIN_LOCATION  15
+#define LASER_HORIZONTAL_ANIMATE_MAX_LOCATION 165
+#define LASER_HORIZONTAL_STEP_SIZE              1 
+
+#define LASER_MOTOR_GROUND_LOCATION           140
+#define LASER_MOTOR_GROUND_FAR_LOCATION       100
+#define LASER_MOTOR_CEILING_LOCATION           20
+
+Servo laserMotorHorizontal;
+Servo laserMotorVertical;
+
+bool laserState;
+int laserHorizontalLocation;
+
+enum LASER_HORIZONTAL_STATE
+{
+  LASER_HORIZONTAL_CENTERED,
+  LASER_HORIZONTAL_ANIMATING_LEFT,
+  LASER_HORIZONTAL_ANIMATING_RIGHT
+} laserHorizontalState = LASER_HORIZONTAL_CENTERED;
+
+
+
+
+
+
 
