@@ -100,7 +100,7 @@ decode_results IRresults;
  Buzzer
 */
 
-#define PIN_BUZZER 22
+#define PIN_BUZZER 53
 
 #define BUZZER_REVERSE_TIME 300
 
@@ -108,9 +108,9 @@ decode_results IRresults;
  Laser
 */
 
-#define PIN_LASER                              11
-#define PIN_LASER_MOTOR_HORIZONTAL             12
-#define PIN_LASER_MOTOR_VERTICAL               10
+#define PIN_LASER                              50
+#define PIN_LASER_MOTOR_HORIZONTAL             51
+#define PIN_LASER_MOTOR_VERTICAL               52
 
 #define LASER_HORIZONTAL_CENTER_LOCATION       95
 #define LASER_HORIZONTAL_ANIMATE_MIN_LOCATION  15
