@@ -17,10 +17,18 @@ void setup() {
     
     // PS4 Controller
     if (Usb.Init() == -1) {
-        Serial.println("Something wrong with the controller");
+        Serial.println("Something wrong with the controller usb host");
         while (1);
     }
     Serial.println("PS4 library started");
+
+    // Drive
+    pinMode(PIN_DRIVE_LEFT_1, OUTPUT);
+    pinMode(PIN_DRIVE_LEFT_2, OUTPUT);
+    pinMode(PIN_DRIVE_LEFT_SPEED, OUTPUT);
+    pinMode(PIN_DRIVE_RIGHT_1, OUTPUT);
+    pinMode(PIN_DRIVE_RIGHT_2, OUTPUT);
+    pinMode(PIN_DRIVE_RIGHT_SPEED, OUTPUT);
 
     // Buzzer
     pinMode(PIN_BUZZER, OUTPUT);
