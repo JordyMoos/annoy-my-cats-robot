@@ -1,7 +1,10 @@
 // PS4 Dependencies
 #include <PS4USB.h>
-#include <PS4BT.h>
-#include <usbhub.h>
+//#include <PS4BT.h>
+//#include <usbhub.h>
+#ifdef dobogusinclude
+#include <spi4teensy3.h>
+#endif
 #include <SPI.h>
 
 #include <Servo.h>
@@ -11,6 +14,13 @@ void setup() {
     // Serial monitor
     Serial.begin(115200);
     while (!Serial);
+    
+    // PS4 Controller
+    if (Usb.Init() == -1) {
+        Serial.println("Something wrong with the controller");
+        while (1);
+    }
+    Serial.println("PS4 library started");
 
     // Buzzer
     pinMode(PIN_BUZZER, OUTPUT);
@@ -37,18 +47,11 @@ void setup() {
 
     // Lasers horizontal motor
     laserMotorHorizontal.attach(PIN_LASER_MOTOR_HORIZONTAL);
-    setLaserCenter();
+    startLaserAnimation();
 
     // Lasers vertical motor
     laserMotorVertical.attach(PIN_LASER_MOTOR_VERTICAL);
-    laserTargetGround();
-
-    // PS4 Controller
-    if (Usb.Init() == -1) {
-        Serial.println("Something wrong with the controller");
-        while (1);
-    }
-    Serial.println("PS4 library started");
+    laserTargetGroundFar();
 }
 
 void loop() {
@@ -64,7 +67,6 @@ void loop() {
     }
 
     updateBuzzer();
-    updateLaserAnimation();
      */
 }
 
@@ -99,10 +101,25 @@ void readPs4Controller() {
             setTurnLeftLights(false);
             setTurnRightLights(false);
         }
+        
+        // Laser direction
+        if (isControllerLaserUp()) {
+          laserGoUp();
+        } else if (isControllerLaserDown()) {
+          laserGoDown();
+        }
+        if (isControllerLaserLeft()) {
+          laserGoLeft();
+        } else if (isControllerLaserRight()) {
+          laserGoRight();
+        }
 
+        // Laser light
         if (isToggleLaser()) {
             toggleLaser();
         }
+
+        delay(10);
 
     } else {
         Serial.println("Controller not connected");

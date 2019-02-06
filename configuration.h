@@ -19,17 +19,17 @@ PS4USB PS4(&Usb);
     Drive
 */
 
-#define PIN_DRIVE_LEFT_1      2
-#define PIN_DRIVE_LEFT_2      4
-#define PIN_DRIVE_LEFT_SPEED  6
+#define PIN_DRIVE_LEFT_1         24
+#define PIN_DRIVE_LEFT_2         25
+#define PIN_DRIVE_LEFT_SPEED    A10
 
-#define PIN_DRIVE_RIGHT_1     7
-#define PIN_DRIVE_RIGHT_2     8
-#define PIN_DRIVE_RIGHT_SPEED 5
+#define PIN_DRIVE_RIGHT_1        26
+#define PIN_DRIVE_RIGHT_2        27
+#define PIN_DRIVE_RIGHT_SPEED   A11
 
-#define DRIVE_FORWARD_SPEED 255
-#define DRIVE_REVERSE_SPEED 150
-#define DRIVE_TURN_SPEED    150
+#define DRIVE_FORWARD_SPEED     255
+#define DRIVE_REVERSE_SPEED     150
+#define DRIVE_TURN_SPEED        150
 
 enum DriveStatus {
   DRIVING_FORWARD,
@@ -43,9 +43,9 @@ enum DriveStatus {
     Lights
 */
 
-#define PIN_LIGHTS_DS          40 // DS Data
-#define PIN_LIGHTS_STCP        41 // ST_CP Storage register clock input
-#define PIN_LIGHTS_SHCP        42 // SH_CP Shift register clock input
+#define PIN_LIGHTS_DS          30 // DS Data
+#define PIN_LIGHTS_STCP        31 // ST_CP Storage register clock input
+#define PIN_LIGHTS_SHCP        32 // SH_CP Shift register clock input
 
 #define LIGHTS_HEAD_LEFT_1      0
 #define LIGHTS_HEAD_LEFT_2      1
@@ -75,32 +75,35 @@ bool redrawLights;
     Buzzer
 */
 
-#define PIN_BUZZER 53
+#define PIN_BUZZER             53
 
-#define BUZZER_REVERSE_TIME 300
+#define BUZZER_REVERSE_TIME   300
 
 /*
     Laser
 */
 
-#define PIN_LASER                              50
-#define PIN_LASER_MOTOR_HORIZONTAL             51
-#define PIN_LASER_MOTOR_VERTICAL               52
+#define PIN_LASER                         22
+#define PIN_LASER_MOTOR_HORIZONTAL        A8
+#define PIN_LASER_MOTOR_VERTICAL          A9
 
-#define LASER_HORIZONTAL_CENTER_LOCATION       95
-#define LASER_HORIZONTAL_ANIMATE_MIN_LOCATION  15
-#define LASER_HORIZONTAL_ANIMATE_MAX_LOCATION 165
-#define LASER_HORIZONTAL_STEP_SIZE              1 
+#define LASER_HORIZONTAL_CENTER_LOCATION  95
+#define LASER_HORIZONTAL_MIN_LOCATION     15
+#define LASER_HORIZONTAL_MAX_LOCATION    165
+#define LASER_HORIZONTAL_STEP_SIZE         1
 
-#define LASER_MOTOR_GROUND_LOCATION           140
-#define LASER_MOTOR_GROUND_FAR_LOCATION       110
-#define LASER_MOTOR_CEILING_LOCATION           20
+#define LASER_VERTICAL_MIN_LOCATION       10
+#define LASER_VERTICAL_MAX_LOCATION      200
+
+#define LASER_MOTOR_GROUND_LOCATION      140
+#define LASER_MOTOR_GROUND_FAR_LOCATION  110
+#define LASER_MOTOR_CEILING_LOCATION      20
 
 Servo laserMotorHorizontal;
 Servo laserMotorVertical;
 
 bool laserState;
-int laserHorizontalLocation;
+int laserHorizontalLocation, laserVerticalLocation;
 
 enum LASER_HORIZONTAL_STATE
 {
