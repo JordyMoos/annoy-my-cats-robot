@@ -65,9 +65,9 @@ void loop() {
     {
       writeLights();
     }
+    */
 
     updateBuzzer();
-     */
 }
 
 void readPs4Controller() {

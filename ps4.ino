@@ -26,20 +26,20 @@ bool isToggleLaser()
 
 bool isControllerLaserUp()
 {
-    return PS4.getAnalogHat(RightHatX) < 100;
+    return PS4.getAnalogHat(RightHatY) < 100;
 }
 
 bool isControllerLaserDown()
 {
-    return PS4.getAnalogHat(RightHatX) > 155;
+    return PS4.getAnalogHat(RightHatY) > 155;
 }
 
 bool isControllerLaserLeft()
 {
-    return PS4.getAnalogHat(RightHatY) < 100;
+    return PS4.getAnalogHat(RightHatX) < 100;
 }
 
 bool isControllerLaserRight()
 {
-    return PS4.getAnalogHat(RightHatY) > 155;
+    return PS4.getAnalogHat(RightHatX) > 155;
 }

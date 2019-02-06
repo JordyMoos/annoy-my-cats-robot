@@ -37,17 +37,17 @@ void laserGoRight()
 
 void laserGoUp()
 {
-  setLaserVerticalLocation(min(
-    laserVerticalLocation + 1,
-    LASER_VERTICAL_MAX_LOCATION
+  setLaserVerticalLocation(max(
+    laserVerticalLocation - 1,
+    LASER_VERTICAL_MIN_LOCATION
   ));
 }
 
 void laserGoDown()
 {
-  setLaserVerticalLocation(max(
-    laserVerticalLocation - 1,
-    LASER_VERTICAL_MIN_LOCATION
+  setLaserVerticalLocation(min(
+    laserVerticalLocation + 1,
+    LASER_VERTICAL_MAX_LOCATION
   ));
 }
 

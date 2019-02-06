@@ -75,7 +75,7 @@ bool redrawLights;
     Buzzer
 */
 
-#define PIN_BUZZER             53
+#define PIN_BUZZER             23
 
 #define BUZZER_REVERSE_TIME   300
 
