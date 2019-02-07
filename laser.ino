@@ -22,7 +22,7 @@ void toggleLaser()
 void laserGoLeft()
 {
   setLaserHorizontalLocation(max(
-    laserHorizontalLocation - 1,
+    laserHorizontalLocation - LASER_STEP_SIZE,
     LASER_HORIZONTAL_MIN_LOCATION
   ));
 }
@@ -30,7 +30,7 @@ void laserGoLeft()
 void laserGoRight()
 {
   setLaserHorizontalLocation(min(
-    laserHorizontalLocation + 1,
+    laserHorizontalLocation + LASER_STEP_SIZE,
     LASER_HORIZONTAL_MAX_LOCATION
   ));
 }
@@ -38,7 +38,7 @@ void laserGoRight()
 void laserGoUp()
 {
   setLaserVerticalLocation(max(
-    laserVerticalLocation - 1,
+    laserVerticalLocation - LASER_STEP_SIZE,
     LASER_VERTICAL_MIN_LOCATION
   ));
 }
@@ -46,7 +46,7 @@ void laserGoUp()
 void laserGoDown()
 {
   setLaserVerticalLocation(min(
-    laserVerticalLocation + 1,
+    laserVerticalLocation + LASER_STEP_SIZE,
     LASER_VERTICAL_MAX_LOCATION
   ));
 }
@@ -62,16 +62,16 @@ void startLaserAnimation()
   laserHorizontalState = LASER_HORIZONTAL_ANIMATING_LEFT;
 }
 
-void setLaserHorizontalLocation(int location)
+void setLaserHorizontalLocation(float location)
 {
   laserHorizontalLocation = location;
-  laserMotorHorizontal.write(location);
+  laserMotorHorizontal.write((int) location);
 }
 
-void setLaserVerticalLocation(int location)
+void setLaserVerticalLocation(float location)
 {
   laserVerticalLocation = location;
-  laserMotorVertical.write(location);
+  laserMotorVertical.write((int) location);
 }
 
 void updateLaserAnimation()
@@ -83,7 +83,7 @@ void updateLaserAnimation()
 
     case LASER_HORIZONTAL_ANIMATING_LEFT:
     {
-      int newLocation = laserHorizontalLocation - LASER_HORIZONTAL_STEP_SIZE;
+      float newLocation = laserHorizontalLocation - LASER_STEP_SIZE;
       if (newLocation <= LASER_HORIZONTAL_MIN_LOCATION)
       {
         laserHorizontalState = LASER_HORIZONTAL_ANIMATING_RIGHT;
@@ -98,7 +98,7 @@ void updateLaserAnimation()
 
     case LASER_HORIZONTAL_ANIMATING_RIGHT:
     {
-      int newLocation = laserHorizontalLocation + LASER_HORIZONTAL_STEP_SIZE;
+      float newLocation = laserHorizontalLocation + LASER_STEP_SIZE;
       if (newLocation >= LASER_HORIZONTAL_MAX_LOCATION)
       {
         laserHorizontalState = LASER_HORIZONTAL_ANIMATING_LEFT;
@@ -135,7 +135,7 @@ void laserTargetCeiling()
   laserTarget(LASER_MOTOR_CEILING_LOCATION);
 }
 
-void laserTarget(int location)
+void laserTarget(float location)
 {
   laserMotorVertical.write(location);
 }

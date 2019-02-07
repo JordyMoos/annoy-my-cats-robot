@@ -57,11 +57,12 @@ void setup() {
 
     // Lasers horizontal motor
     laserMotorHorizontal.attach(PIN_LASER_MOTOR_HORIZONTAL);
-    startLaserAnimation();
+    setLaserHorizontalLocation(LASER_HORIZONTAL_CENTER_LOCATION);
 
     // Lasers vertical motor
     laserMotorVertical.attach(PIN_LASER_MOTOR_VERTICAL);
     laserTargetGroundFar();
+    setLaserVerticalLocation(LASER_VERTICAL_CENTER_LOCATION);
 }
 
 void loop() {
@@ -128,7 +129,5 @@ void readPs4Controller() {
         if (isToggleLaser()) {
             toggleLaser();
         }
-
-        delay(10);
     }
 }

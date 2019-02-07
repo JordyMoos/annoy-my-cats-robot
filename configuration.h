@@ -83,27 +83,29 @@ bool redrawLights;
     Laser
 */
 
-#define PIN_LASER                         22
-#define PIN_LASER_MOTOR_HORIZONTAL        A8
-#define PIN_LASER_MOTOR_VERTICAL          A9
+#define PIN_LASER                            22
+#define PIN_LASER_MOTOR_HORIZONTAL           A8
+#define PIN_LASER_MOTOR_VERTICAL             A9
 
-#define LASER_HORIZONTAL_CENTER_LOCATION  95
-#define LASER_HORIZONTAL_MIN_LOCATION     15
-#define LASER_HORIZONTAL_MAX_LOCATION    165
-#define LASER_HORIZONTAL_STEP_SIZE         1
+#define LASER_STEP_SIZE                    0.05
 
-#define LASER_VERTICAL_MIN_LOCATION       10
-#define LASER_VERTICAL_MAX_LOCATION      200
+#define LASER_HORIZONTAL_CENTER_LOCATION   95.0
+#define LASER_HORIZONTAL_MIN_LOCATION      15.0
+#define LASER_HORIZONTAL_MAX_LOCATION     165.0
 
-#define LASER_MOTOR_GROUND_LOCATION      140
-#define LASER_MOTOR_GROUND_FAR_LOCATION  110
-#define LASER_MOTOR_CEILING_LOCATION      20
+#define LASER_VERTICAL_CENTER_LOCATION    100.0
+#define LASER_VERTICAL_MIN_LOCATION        10.0
+#define LASER_VERTICAL_MAX_LOCATION       200.0
+
+#define LASER_MOTOR_GROUND_LOCATION       140.0
+#define LASER_MOTOR_GROUND_FAR_LOCATION   110.0
+#define LASER_MOTOR_CEILING_LOCATION       20.0
 
 Servo laserMotorHorizontal;
 Servo laserMotorVertical;
 
 bool laserState;
-int laserHorizontalLocation, laserVerticalLocation;
+float laserHorizontalLocation, laserVerticalLocation;
 
 enum LASER_HORIZONTAL_STATE
 {
