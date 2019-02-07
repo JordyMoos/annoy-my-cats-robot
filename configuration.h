@@ -6,12 +6,12 @@
 USB Usb;
 
 // For USB connection
-PS4USB PS4(&Usb);
+//PS4USB PS4(&Usb);
 
 // For BlueTooth connection
-//BTD Btd(&Usb)
+BTD Btd(&Usb);
 // In case you need to pair
-//PS4BT PS4(&Btd, PAIR);
+PS4BT PS4(&Btd, PAIR);
 // In case you are already paired
 //PS4BT PS4(&Btd);
 

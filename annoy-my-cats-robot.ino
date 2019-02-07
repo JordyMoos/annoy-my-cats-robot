@@ -1,7 +1,9 @@
 // PS4 Dependencies
-#include <PS4USB.h>
-//#include <PS4BT.h>
-//#include <usbhub.h>
+//#include <PS4USB.h>
+
+#include <PS4BT.h>
+#include <usbhub.h>
+
 #ifdef dobogusinclude
 #include <spi4teensy3.h>
 #endif
@@ -128,9 +130,5 @@ void readPs4Controller() {
         }
 
         delay(10);
-
-    } else {
-        Serial.println("Controller not connected");
-        delay(100);
     }
 }
