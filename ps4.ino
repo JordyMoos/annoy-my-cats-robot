@@ -1,45 +1,36 @@
 
-bool isControllerDrivingForward()
-{
+bool isControllerDrivingForward() {
     return PS4.getAnalogHat(LeftHatY) < 100;
 }
 
-bool isControllerDrivingBackward()
-{
+bool isControllerDrivingBackward() {
     return PS4.getAnalogHat(LeftHatY) > 155;
 }
 
-bool isControllerDrivingLeft()
-{
+bool isControllerDrivingLeft() {
     return PS4.getAnalogHat(LeftHatX) < 100;
 }
 
-bool isControllerDrivingRight()
-{
+bool isControllerDrivingRight() {
     return PS4.getAnalogHat(LeftHatX) > 155;
 }
 
-bool isToggleLaser()
-{
+bool isToggleLaser() {
     return PS4.getButtonClick(CROSS);
 }
 
-bool isControllerLaserUp()
-{
+bool isControllerLaserUp() {
     return PS4.getAnalogHat(RightHatY) < 100;
 }
 
-bool isControllerLaserDown()
-{
+bool isControllerLaserDown() {
     return PS4.getAnalogHat(RightHatY) > 155;
 }
 
-bool isControllerLaserLeft()
-{
+bool isControllerLaserLeft() {
     return PS4.getAnalogHat(RightHatX) < 100;
 }
 
-bool isControllerLaserRight()
-{
+bool isControllerLaserRight() {
     return PS4.getAnalogHat(RightHatX) > 155;
 }

@@ -5,15 +5,9 @@
 
 USB Usb;
 
-// For USB connection
-//PS4USB PS4(&Usb);
-
 // For BlueTooth connection
 BTD Btd(&Usb);
-// In case you need to pair
 PS4BT PS4(&Btd, PAIR);
-// In case you are already paired
-//PS4BT PS4(&Btd);
 
 /*
     Drive
@@ -32,11 +26,11 @@ PS4BT PS4(&Btd, PAIR);
 #define DRIVE_TURN_SPEED        150
 
 enum DriveStatus {
-  DRIVING_FORWARD,
-  DRIVING_REVERSE,
-  DRIVING_LEFT,
-  DRIVING_RIGHT,
-  DRIVING_STOPPED
+    DRIVING_FORWARD,
+    DRIVING_REVERSE,
+    DRIVING_LEFT,
+    DRIVING_RIGHT,
+    DRIVING_STOPPED
 } driveStatus = DRIVING_STOPPED;
 
 /*
@@ -107,9 +101,8 @@ Servo laserMotorVertical;
 bool laserState;
 float laserHorizontalLocation, laserVerticalLocation;
 
-enum LASER_HORIZONTAL_STATE
-{
-  LASER_HORIZONTAL_CENTERED,
-  LASER_HORIZONTAL_ANIMATING_LEFT,
-  LASER_HORIZONTAL_ANIMATING_RIGHT
+enum LASER_HORIZONTAL_STATE {
+    LASER_HORIZONTAL_CENTERED,
+    LASER_HORIZONTAL_ANIMATING_LEFT,
+    LASER_HORIZONTAL_ANIMATING_RIGHT
 } laserHorizontalState = LASER_HORIZONTAL_CENTERED;

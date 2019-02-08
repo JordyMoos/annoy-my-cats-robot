@@ -1,12 +1,4 @@
-// PS4 Dependencies
-//#include <PS4USB.h>
-
 #include <PS4BT.h>
-#include <usbhub.h>
-
-#ifdef dobogusinclude
-#include <spi4teensy3.h>
-#endif
 #include <SPI.h>
 
 #include <Servo.h>
@@ -16,7 +8,7 @@ void setup() {
     // Serial monitor
     Serial.begin(115200);
     while (!Serial);
-    
+
     // PS4 Controller
     if (Usb.Init() == -1) {
         Serial.println("Something wrong with the controller usb host");
@@ -112,17 +104,17 @@ void readPs4Controller() {
             setTurnLeftLights(false);
             setTurnRightLights(false);
         }
-        
+
         // Laser direction
         if (isControllerLaserUp()) {
-          laserGoUp();
+            laserGoUp();
         } else if (isControllerLaserDown()) {
-          laserGoDown();
+            laserGoDown();
         }
         if (isControllerLaserLeft()) {
-          laserGoLeft();
+            laserGoLeft();
         } else if (isControllerLaserRight()) {
-          laserGoRight();
+            laserGoRight();
         }
 
         // Laser light
