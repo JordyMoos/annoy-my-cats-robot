@@ -16,7 +16,11 @@ bool isControllerDrivingRight() {
 }
 
 bool isToggleLaser() {
-    return PS4.getButtonClick(CROSS);
+    return PS4.getButtonClick(CIRCLE);
+}
+
+bool isToot() {
+    return PS4.getButtonPress(CROSS);
 }
 
 bool isInvertHorizontalLaserMotor() {

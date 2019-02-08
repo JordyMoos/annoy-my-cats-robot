@@ -29,6 +29,7 @@ void setup() {
     // Buzzer
     pinMode(PIN_BUZZER, OUTPUT);
     buzzOff();
+    isTooting = false;
 
     // Lights
     pinMode(PIN_LIGHTS_DS, OUTPUT);
@@ -137,6 +138,9 @@ void readPs4Controller() {
         if (isToggleLaser()) {
             toggleLaser();
         }
+
+        // Toot
+        isTooting = isToot();
     } else {
         if (digitalRead(PIN_PAIR_RESET) == HIGH) {
             if (millis() - MINIMUM_MILLIS_BETWEEN_PAIRS > lastPair) {

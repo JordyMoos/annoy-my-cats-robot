@@ -1,15 +1,20 @@
 
 void updateBuzzer() {
-    switch (driveStatus) {
-        case DRIVING_REVERSE:
-            if ((millis() / BUZZER_REVERSE_TIME) % 2)
-                buzzOn();
-            else
+    if (isTooting) {
+      buzzOn();
+    }
+    else {
+        switch (driveStatus) {
+            case DRIVING_REVERSE:
+                if ((millis() / BUZZER_REVERSE_TIME) % 2)
+                    buzzOn();
+                else
+                    buzzOff();
+                break;
+    
+            default:
                 buzzOff();
-            break;
-
-        default:
-            buzzOff();
+        }
     }
 }
 

@@ -78,6 +78,8 @@ bool redrawLights;
 
 #define BUZZER_REVERSE_TIME   300
 
+bool isTooting;
+
 /*
     Laser
 */
