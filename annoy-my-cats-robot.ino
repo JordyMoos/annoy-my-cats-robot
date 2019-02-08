@@ -52,6 +52,7 @@ void setup() {
     // Lasers horizontal motor
     laserMotorHorizontal.attach(PIN_LASER_MOTOR_HORIZONTAL);
     setLaserHorizontalLocation(LASER_HORIZONTAL_CENTER_LOCATION);
+    laserHorizontalInverted = false;
 
     // Lasers vertical motor
     laserMotorVertical.attach(PIN_LASER_MOTOR_VERTICAL);
@@ -114,9 +115,22 @@ void readPs4Controller() {
             laserGoDown();
         }
         if (isControllerLaserLeft()) {
-            laserGoLeft();
+            if (laserHorizontalInverted) {
+                laserGoRight();
+            } else {
+                laserGoLeft();
+            }
         } else if (isControllerLaserRight()) {
-            laserGoRight();
+            if (laserHorizontalInverted) {
+                laserGoLeft();
+            } else {
+                laserGoRight();
+            }
+        }
+
+        // Laser motor invertion
+        if (isInvertHorizontalLaserMotor()) {
+          invertHorizontalLaserMotor();
         }
 
         // Laser light

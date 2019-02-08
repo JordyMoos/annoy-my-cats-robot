@@ -104,6 +104,7 @@ Servo laserMotorHorizontal;
 Servo laserMotorVertical;
 
 bool laserState;
+bool laserHorizontalInverted;
 float laserHorizontalLocation, laserVerticalLocation;
 
 enum LASER_HORIZONTAL_STATE {

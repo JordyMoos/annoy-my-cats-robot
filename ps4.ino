@@ -19,6 +19,10 @@ bool isToggleLaser() {
     return PS4.getButtonClick(CROSS);
 }
 
+bool isInvertHorizontalLaserMotor() {
+    return PS4.getButtonClick(TRIANGLE);
+}
+
 bool isControllerLaserUp() {
     return PS4.getAnalogHat(RightHatY) < 100;
 }

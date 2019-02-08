@@ -17,6 +17,10 @@ void toggleLaser() {
  Horizontal Motor
 */
 
+void invertHorizontalLaserMotor() {
+    laserHorizontalInverted = ! laserHorizontalInverted;
+}
+
 void laserGoLeft() {
     setLaserHorizontalLocation(max(
             laserHorizontalLocation - LASER_STEP_SIZE,
@@ -28,20 +32,6 @@ void laserGoRight() {
     setLaserHorizontalLocation(min(
             laserHorizontalLocation + LASER_STEP_SIZE,
             LASER_HORIZONTAL_MAX_LOCATION
-    ));
-}
-
-void laserGoUp() {
-    setLaserVerticalLocation(max(
-            laserVerticalLocation - LASER_STEP_SIZE,
-            LASER_VERTICAL_MIN_LOCATION
-    ));
-}
-
-void laserGoDown() {
-    setLaserVerticalLocation(min(
-            laserVerticalLocation + LASER_STEP_SIZE,
-            LASER_VERTICAL_MAX_LOCATION
     ));
 }
 
@@ -57,11 +47,6 @@ void startLaserAnimation() {
 void setLaserHorizontalLocation(float location) {
     laserHorizontalLocation = location;
     laserMotorHorizontal.write((int) location);
-}
-
-void setLaserVerticalLocation(float location) {
-    laserVerticalLocation = location;
-    laserMotorVertical.write((int) location);
 }
 
 void updateLaserAnimation() {
@@ -96,6 +81,25 @@ void updateLaserAnimation() {
 /*
  Vertical Motor
 */
+
+void laserGoUp() {
+    setLaserVerticalLocation(max(
+            laserVerticalLocation - LASER_STEP_SIZE,
+            LASER_VERTICAL_MIN_LOCATION
+    ));
+}
+
+void laserGoDown() {
+    setLaserVerticalLocation(min(
+            laserVerticalLocation + LASER_STEP_SIZE,
+            LASER_VERTICAL_MAX_LOCATION
+    ));
+}
+
+void setLaserVerticalLocation(float location) {
+    laserVerticalLocation = location;
+    laserMotorVertical.write((int) location);
+}
 
 void laserTargetGround() {
     laserVerticalLocation = LASER_MOTOR_GROUND_LOCATION;
