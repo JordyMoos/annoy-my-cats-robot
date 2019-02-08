@@ -15,6 +15,8 @@ void setup() {
         while (1);
     }
     Serial.println("PS4 library started");
+    pinMode(PIN_PAIR_RESET, INPUT);
+    lastPair = 0;
 
     // Drive
     pinMode(PIN_DRIVE_LEFT_1, OUTPUT);
@@ -120,6 +122,13 @@ void readPs4Controller() {
         // Laser light
         if (isToggleLaser()) {
             toggleLaser();
+        }
+    } else {
+        if (digitalRead(PIN_PAIR_RESET) == HIGH) {
+            if (millis() - MINIMUM_MILLIS_BETWEEN_PAIRS > lastPair) {
+                lastPair = millis();
+                PS4.pair();
+            }
         }
     }
 }

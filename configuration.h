@@ -7,7 +7,12 @@ USB Usb;
 
 // For BlueTooth connection
 BTD Btd(&Usb);
-PS4BT PS4(&Btd, PAIR);
+PS4BT PS4(&Btd);
+
+int lastPair;
+
+#define PIN_PAIR_RESET                 28
+#define MINIMUM_MILLIS_BETWEEN_PAIRS 2000
 
 /*
     Drive
