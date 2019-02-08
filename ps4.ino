@@ -1,10 +1,26 @@
 
 bool isControllerDrivingForward() {
-    return PS4.getAnalogHat(LeftHatY) < 100;
+    return PS4.getAnalogButton(R2) > 10;
+}
+
+int getControllerDrivingForwardSpeed() {
+  if (isControllerDrivingForward()) {
+    return PS4.getAnalogButton(R2);
+  } else {
+    return 0;
+  }
 }
 
 bool isControllerDrivingBackward() {
-    return PS4.getAnalogHat(LeftHatY) > 155;
+    return PS4.getAnalogButton(L2) > 10;
+}
+
+int getControllerDrivingBackwardSpeed() {
+  if (isControllerDrivingBackward()) {
+    return PS4.getAnalogButton(L2);
+  } else {
+    return 0;
+  }
 }
 
 bool isControllerDrivingLeft() {

@@ -82,17 +82,7 @@ void readPs4Controller() {
 
     if (PS4.connected()) {
         // Car direction
-        if (isControllerDrivingForward()) {
-            driveForward();
-            setReverseLights(false);
-            setTurnLeftLights(false);
-            setTurnRightLights(false);
-        } else if (isControllerDrivingBackward()) {
-            driveReverse();
-            setReverseLights(true);
-            setTurnLeftLights(false);
-            setTurnRightLights(false);
-        } else if (isControllerDrivingLeft()) {
+        if (isControllerDrivingLeft()) {
             driveLeft();
             setReverseLights(false);
             setTurnLeftLights(true);
@@ -102,6 +92,16 @@ void readPs4Controller() {
             setReverseLights(false);
             setTurnLeftLights(false);
             setTurnRightLights(true);
+        } else if (isControllerDrivingForward()) {
+            driveForward();
+            setReverseLights(false);
+            setTurnLeftLights(false);
+            setTurnRightLights(false);
+        } else if (isControllerDrivingBackward()) {
+            driveReverse();
+            setReverseLights(true);
+            setTurnLeftLights(false);
+            setTurnRightLights(false);
         } else {
             driveStop();
             setReverseLights(false);
